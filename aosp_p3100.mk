@@ -1,5 +1,5 @@
 #
-# Copyright (C) 2012 The CyanogenMod Project
+# Copyright 2013 The Android Open-Source Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -14,6 +14,16 @@
 # limitations under the License.
 #
 
-PRODUCT_MAKEFILES := \
-    $(LOCAL_DIR)/aosp_p3100.mk \
-    $(LOCAL_DIR)/full_p3100.mk
+# Inherit device configuration
+$(call inherit-product, device/samsung/p3100/full_p3100.mk)
+
+# Device identifier. This must come after all inclusions
+PRODUCT_NAME := aosp_p3100
+
+# Set Product Name etc.
+PRODUCT_BUILD_PROP_OVERRIDES += \
+    PRODUCT_NAME=espressorfxx \
+    TARGET_DEVICE=espressorf
+
+PRODUCT_PACKAGES += \
+    Launcher3
